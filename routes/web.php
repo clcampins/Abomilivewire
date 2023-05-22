@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Productos;
+use App\Http\Livewire\Home\Home;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +13,10 @@ use App\Http\Livewire\Productos;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', Home::class)->name('home.tienda');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/productos', Productos::class);

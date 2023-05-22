@@ -13,6 +13,13 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        <!-- Gogole Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
+            rel="stylesheet" />
+
         @livewireStyles
 
         <!-- Scripts -->
@@ -22,7 +29,9 @@
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+            @if(auth()->check())
+                @livewire('navigation-menu')
+            @endif
 
             <!-- Page Heading -->
             @if (isset($header))

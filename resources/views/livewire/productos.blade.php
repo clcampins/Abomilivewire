@@ -26,7 +26,11 @@
         <thead>
             <tr class="bg-indigo-600 text-white">
                 <th class="px-4 py-2">ID</th>
-                <th class="px-4 py-2">DESCRIPCION</th>
+                <th class="px-4 py-2">NOMBRE</th>
+                <th class="px-4 py-2">PRECIO NORMAL</th>
+                <th class="px-4 py-2">PRECIO DESCUENTO</th>
+                <th class="px-4 py-2">TIPO</th>
+                <th class="px-4 py-2">MARCA</th>
                 <th class="px-4 py-2">CANTIDAD</th>
                 <th class="px-4 py-2">ACCIONES</th>    
             </tr>
@@ -35,7 +39,11 @@
             @foreach($productos as $producto)
             <tr>
                 <td class="border px-4 py-2">{{$producto->id}}</td>
-                <td class="border px-4 py-2">{{$producto->descripcion}}</td>
+                <td class="border px-4 py-2">{{$producto->nombre}}</td>
+                <td class="border px-4 py-2">{{$producto->precio_normal}}</td>
+                <td class="border px-4 py-2">{{$producto->precio_con_descuento}}</td>
+                <td class="border px-4 py-2">{{$producto->tipo_producto}}</td>
+                <td class="border px-4 py-2">{{$producto->marca}}</td>
                 <td class="border px-4 py-2">{{$producto->cantidad}}</td>
                 <td class="border px-4 py-2 text-center">
                     <button wire:click="editar({{$producto->id}})" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4">Editar</button>

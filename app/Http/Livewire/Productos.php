@@ -8,9 +8,19 @@ use App\Models\Producto;
 class Productos extends Component
 {
     //definimos unas variables
-    public $productos, $descripcion, $cantidad, $id_producto;
+    public $productos, $nombre, $descripcion_larga, $descripcion_corta, $precio_normal, $precio_con_descuento, $tipo_producto, $marca, $cantidad,  $id_producto;
     public $modal = false;
 
+    protected $rules = [
+        'nombre' => 'required',
+        'descripcion_larga' => 'required|max:255',
+        'descripcion_corta' => 'required|max:50',
+        'precio_normal' => 'required',
+        'tipo_producto' => 'required',
+        'marca' => 'required',
+        'cantidad' => 'required'
+    ];
+    
     public function render()
     {
         $this->productos = Producto::all();
@@ -30,7 +40,13 @@ class Productos extends Component
         $this->modal = false;
     }
     public function limpiarCampos(){
-        $this->descripcion = '';
+        $this->nombre = '';
+        $this->descripcion_larga = '';
+        $this->descripcion_corta = '';
+        $this->precio_normal = '';
+        $this->precio_con_descuento = '';
+        $this->tipo_producto = '';
+        $this->marca = '';
         $this->cantidad = '';
         $this->id_producto = '';
     }
@@ -38,7 +54,13 @@ class Productos extends Component
     {
         $producto = Producto::findOrFail($id);
         $this->id_producto = $id;
-        $this->descripcion = $producto->descripcion;
+        $this->nombre = $producto->nombre;
+        $this->descripcion_larga = $producto->descripcion_larga;
+        $this->descripcion_corta = $producto->descripcion_corta;
+        $this->precio_normal = $producto->precio_normal;
+        $this->precio_con_descuento = $producto->precio_con_descuento;
+        $this->tipo_producto = $producto->tipo_producto;
+        $this->marca = $producto->marca;
         $this->cantidad = $producto->cantidad;
         $this->abrirModal();
     }
@@ -51,9 +73,17 @@ class Productos extends Component
 
     public function guardar()
     {
+        $this->validate();
+
         Producto::updateOrCreate(['id'=>$this->id_producto],
             [
-                'descripcion' => $this->descripcion,
+                'nombre' => $this->nombre,
+                'descripcion_larga' => $this->descripcion_larga,
+                'descripcion_corta' => $this->descripcion_corta,
+                'precio_normal' => $this->precio_normal,
+                'precio_con_descuento' => $this->precio_con_descuento,
+                'tipo_producto' => $this->tipo_producto,
+                'marca' => $this->marca,
                 'cantidad' => $this->cantidad
             ]);
          

@@ -33374,6 +33374,10 @@ select {
   --tw-backdrop-sepia: sepia(100%);
 }
 
+section {
+  font-family: "Poppins", sans-serif;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -195823,4 +195827,3 @@ select {
     --tw-backdrop-sepia: sepia(100%);
   }
 }
-
